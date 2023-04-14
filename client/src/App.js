@@ -1,9 +1,11 @@
-import "./App.css";
+import Register from "./scenes/register";
 
 function App() {
   return (
     <div className="">
-      <>Testasdf</>
+      <>
+        <Register />
+      </>
     </div>
   );
 }
