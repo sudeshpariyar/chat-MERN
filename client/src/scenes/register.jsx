@@ -1,12 +1,21 @@
+import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../features/userSlice";
 
 const Register = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log(name, password);
+    try {
+      const { data } = await axios.post("auth/register", { name, password });
+      dispatch(registerUser({ data }));
+    } catch (error) {
+      throw error.message;
+    }
   };
 
   return (
